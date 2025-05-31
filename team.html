@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teams</title>
+</head>
+<body>
+    <form action= "http://127.0.0.1:8000/teams" method="POST">
+        <input type="text" name= "name" placeholder="team name" required>
+        <input type="text" name= "owner" placeholder="team owner" required>
+        <input type="file" name="logo" accept="image/*" required>
+        <input type="text" name= "tagline" placeholder="tagline" required>
+        <input type="text" name= "color" placeholder="color" required>
+        <input type="text" name= "players[]" placeholder="player 1" required>
+        <input type="text" name= "players[]" placeholder="player 2" required>
+        <input type="text" name= "coach" placeholder="coach" required>
+        <input type="text" name= "state" placeholder="state" required>
+        <input type="submit" name="create team">
+
+    </form>
+</body>
+</html>
