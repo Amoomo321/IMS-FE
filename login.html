@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+
+    <script>
+        async function login() {
+            const input_email = document.getElementById("EMAIL").value;
+            const input_password = document.getElementById("PASSWORD").value;
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/tokens", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email: input_email,
+                        password: input_password
+                    })
+                });
+
+                const result = await response.json();
+                console.log(result);
+
+                if (result.token) {
+                    alert("Login successful! Token: " + result.token);
+                    // Optionally store the token:
+                    // localStorage.setItem("token", result.token);
+                } else {
+                    alert("Login failed: " + result.error);
+                }
+            } catch (err) {
+                console.error("Login error:", err);
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>USERS</h1>
+    <div>
+        <b>Email</b>
+        <input id="EMAIL" type="email" placeholder="Enter your email"><br>
+        <b>password</b>
+        <input id="PASSWORD" type="password" placeholder="Enter your password"><br>
+        <button onclick="login()"> CLICK HERE</button>
+    </div>
+</body>
+
+</html>
